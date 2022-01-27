@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Ferret List</h1>
+
+{% for ferret in ferrets %}
+<div class="card">
+  <!-- add this single line below -->
+  <a href="{% url 'detail' ferret.id %}">
+    <div class="card-content">
+      <span class="card-title">{{ ferret.name }}</span>
+      <p>Breed: {{ ferret.breed }}</p>
+      <p>Description: {{ ferret.description }}</p>
+      {% if ferret.age > 0 %}
+      <p>Age: {{ ferret.age }}</p>
+      {% else %}
+      <p>Age: little ferret</p>
+      {% endif %}
+    </div>
+    <!-- and this following one as well -->
+  </a>
+</div>
+{% endfor %}
+
+{% endblock %}
